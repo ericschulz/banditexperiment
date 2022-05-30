@@ -1,29 +1,17 @@
-Structured Bandits Project
+Bandits Experiment
 
-> Nick Franklin, Eric Schulz and Sam Gershman.
-> "Finding structure in multi-armed bandits."
+> Eric Schulz, May 2022
+> A simple bandit experiment. Code is legacy.
 
-In particular, it contains the reproducible code for the experiment as well as the code to generate the underlying functions.
-
-# Index
-## Experiment
+##  Current experiment
 
 This is the html/js-implementation of the experiment. In particular,
 
 - index.html: the implementation of the experiment.
 - letters: the arms with the letters written on them
-- envs: generated functions, 100 are positive-linear, 100 are negative linear, and 100 are permutations of the two
-- js: this is where the JavaScript is hosted, structuredbandit.js contains the documented code
+- js: structuredbandit.js contains the documented code
 
+Currently, there are 5 blocks with 5 trials each. There are 8 arms and every arm just returns 20.
 
-## Function generation
-
-This is how I generated the functions in envs:
-
-- generate.R: shows how I generated functions from a linear kernel and exported it to JSON
-
-
-## Paper
-
-To be written.
-
+## Task
+What we want, are 10 blocks with 10 trials each. There should be 2 arms only and each should return --when sampled-- a normally-distributed reward with x~N(25, 5). Good luck!
