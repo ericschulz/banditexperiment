@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Structural Bandit Experiment">
+    <meta name="author" content="Eric Schulz">
+    <meta charset="utf-8">
+    <title>Decision making experiment</title>
+    <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+    <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
+    <link href="js/bootstrap.css" rel="stylesheet" type="text/css">
+ </head>
+	 
+	<div class="container" >
+	    
+	   <!--First page contains Welcome-->   
+	   <div id="page1" style="display:block">
+	     <h3><font FACE="bookman">Decision making experiment</font></h3>
+	     <p> This study is part of a research project conducted by Eric Schulz. </p>
+	     <p> If you have any questions, please contact: <strong>eric.schulz@tue.mpg.de</strong></p>
+	     <button type="button" name="button"; onclick="clickStart('page1','page2')"; >Continue</button>
+	   </div>
+
+		<!--Second page contains Concent form-->
+	   <div id="page2" style="display:none">
+	   		<br> 
+		   	<h4><center>Statement of Informed Consent</center></h4>
+		   	<p><center>Please consider this information carefully before deciding whether to participate in this research.</center></p>
+		    <p><b>Purpose of the research:</b> To examine the way people make decisions and learn about the relationships between stimuli, actions and rewards. </p>
+		    <p><b>What you will do in this research:</b> Stimuli (images) will be presented on the computer and you will be asked to choose between different actions after which you may receive feedback to earn monetary reward. You may also be asked to fill out short questionnaires. </p>
+		    <p><b>Time required: </b> Participation will take up to 10 minutes to complete.</p>
+		    <p><b>Risks:</b>  Some of the questionnaires contain questions about sensitive topics such as sexual, physical, or emotional abuse, drug use, violent behavior, medical/psychiatric history, etc., and could cause you to feel uncomfortable or upset. If you do not feel comfortable, you can skip questions or stop the questionnaires at any time.</p>
+		    <p><b>Compensation:</b> You will receive $2 in compensation plus up to $1.50 in bonus for your performance on the task.</p>
+		    <p><b>Confidentiality:</b>  Your participation in this study will remain confidential. Your MTurk worker IDs will NOT be shared with anyone outside of the research team. However, work you perform on MTurk can be linked to your pub-lic profile page. Thus, to maximize your privacy, you may wish to restrict what information you choose to share in your public profile. Your de-identified data may be shared with other researchers and used in future projects.</p>
+		   <p><b>Participation and withdrawal: </b>Your participation in this study is completely voluntary and you may refuse to participate or you may choose to withdraw at any time without penalty or loss of benefits to which you are otherwise entitled.</p>	
+		 <p><b>Agreement:  </b></p>
+			<div style="margin-left:30px;margin-right:30px"> <p>The nature and purpose of this research have been sufficiently explained and I agree to participate in this study.  I understand that I am free to withdraw at any time without incurring any penalty.</p>
+			<p>Please consent by clicking the button below to continue. Otherwise, please exit the study at this time. </p>
+			<button type="button" name="button"; onclick="clickStart('page2','page3')"; >Agree</button>
+			</div>
+			<br><br>
+	    </div>
+
+	    <!--Third page contains Overview-->
+		<div id="page3" style="display:none">
+		   <br>
+		   <b> Please enter your Mechanical Turk Worker ID (required for bonus payment):</b><br>
+		   <input type="text" id="mturk" maxlength="20" value="WorkerID"><br><br>
+		   <button type="button" name="button"; onclick="gettingstarted()"; >Go to next page</button>
+		</div>
+
+
+		<!--Third page contains Overview-->
+		<div id="page4" style="display:none">
+		   <br>
+		     <p><b>Overview:</b></p>
+			 <ul>
+			    <li>In this study, you will repeatedly choose between different buttons to earn points. </li>
+			    <li>Your goal is to earn as many points as possible.</li>
+			    <li>Which button you choose is up to you and each of them is worth a different number of points</li>
+			    <li>Each button you can press is shown on the screen with a white square and the associated key on the keyboard.</li> 
+			    <li>You can choose an option by pressing the corresponding letter/symbol on your keyboard.</li>
+			    <li>When you have made a choice, the ammount of points you won will appear on the screen.</li>
+			 </ul>
+		   <br>			   
+		   <button type="button" name="button"; onclick="clickStart('page4','page5')"; >Go to next page</button>
+		</div>
+
+	 	<!--Fourth page contains description on how so sample options-->
+		<div id="page5" style="display:none">
+			 <br>
+			  <p><b>Find the good options:</b></p>
+				 <ul>
+				    <li>This studys consists of 5 rounds in total. On each round, you will have 5 consecutive chances to choose from the provided options.</li>
+				    <li>On every round, your goal earn as many points as possible by finding the most valuable option.</li>
+				    <li>After each round, the game resets and the point-values for each choice may change for the next round.</li> 
+				    <li>You can choose an option by pressing the corresponding letter/symbol on your keyboard (see screenshot below).</li>
+				    <li>You will get feedback on every trial about the number of points you have gained by choosing from the selected option.</li>
+				    <li>You can make the same choice as many times as you like on each round but you might not earn the same number of points!</li>
+				    <li>You will be paid $0.01 for every 100 points you gained during the experiment.</li>
+				 </ul>
+			<br>
+			<img src="arms.png" width="600" ><br><br>
+			<button type="button" name="button"; onclick="clickStart('page5','page6')"; >Go to next page</button>
+		</div>
+
+		<!--Fifth page contains keyboard layout-->
+		<div id="page6" style="display:none">
+			<br>
+				<p><b>Keyboard finger position:</b></p>
+					 <ul>
+					    <li>We kindly ask you to place your hands on the keyboard as shown in the picture below.</li>
+					    <li>Please use your left hand to select the options <b>A</b>, <b>S</b>, <b>D</b> or <b>F</b>. Use your right hand to select <b>J</b>, <b>K</b>, <b>L</b> or <b>;</b>.</li>
+					    <li>Please use your left index finger to select <b>F</b>, and your right index finger to select <b>J</b>, and so forth.</li>
+					</ul>
+				<br>
+				<img src="fingerposition.png" width="600" ><br><br>
+				<button type="button" name="button"; onclick="clickStart('page6','page7')"; >Go to next page</button>  
+			<br>
+		</div>
+
+		<!--Sixth page contains comprehension check-->
+		<div id="page7" style="display:none">
+		    <fieldset>
+			    <legend>Please answer a few questions about this study before proceeding</legend>
+			    <fieldset style="float:left;width:400px;margin:5px">
+			        What is your task in this study?<br>
+			        <input type="radio" name="q1"  > Find the best option.<br>
+			        <input type="radio" name="q1" id="icheck1" > Gain as many points as possible.<br>
+			        <input type="radio" name="q1" > Produce 30 outputs.<br>
+			        <input type="radio" name="q1" > I do not know.<br>
+			    </fieldset>
+			    <fieldset style="float:left;width:400px;margin:5px">
+			        How many rounds will there be in total?<br>
+			        <input type="radio" name="q2"> 1 <br>
+			        <input type="radio" name="q2"> 2 <br>
+			        <input type="radio" name="q2"  id="icheck2"> 5<br>
+			        <input type="radio" name="q2"> 10 <br>
+			    </fieldset>
+			    <fieldset style="float:left;width:400px;margin:5px">
+			         What happens after a round is finished?<br>
+			        <input type="radio" name="q3"               >  
+			         Nothing.<br>
+			        <input type="radio" name="q3"               > 
+			         Game resets and the same options can lead to high points.<br>
+			        <input type="radio" name="q3" id="icheck3"                > 
+			         Game resets and different options can lead to high points.<br>
+			        <input type="radio" name="q3" > 
+			         Game resets and high options get lower.<br>
+			    </fieldset>
+		    </fieldset>
+		    <br><br><br><br>
+		    <p>You will only be directed to the next page if you manage to answer all of the questions correctly.</p>
+		    <button type="button" name="button"; onclick="instructioncheck()"; >Check answers</button>  
+		</div>
+
+		<!--Seventh page contains task-->
+		<div id="page8" style="display:none">
+			<h1> <font size="4">Please choose an option to gain points.</font> </h1>
+			<div id="explainshow" style="display:block">
+				<p> <b>Summarized Instructions:</b></p>
+				<p><b>I.</b> Below, there are 8 different options marked by different letters/symbols. When you press the letter/symbol of a particular option on your keyboard, the number of points you earn for that options will be revealed and will be displayed below for 2 seconds. </p>
+				<p><b>II.</b> Options can be repeatedly chosen, although there may be small variations in the points earned.</p>
+				<p><b>III.</b> Every option can lead to different points. Your task is to earn as many points as possible by selecting valuable options. </p>
+				<p><b>IV.</b> On top of the options, you can see how many clicks you have left and the amount of points you have earned so far.</p>
+				<button type="button" name="button"; onclick="clickStart('explainshow','explainhide')"; >Hide guidelines</button>
+			</div>
+			<div id="explainhide" style="display:none">
+				<button type="button" name="button"; onclick="clickStart('explainhide','explainshow')"; >Show guidelines</button>
+			</div>
+			<center>
+				<b><h3><div id="remain">Number of trials left: 5</div></h3></b>
+				<b><h3><div id="score">Total Score: 0.0</div></h3></b>
+				<div id='arm1' style="display: inline"></div>
+				<div id='arm2' style="display: inline"></div>
+				<div id='arm3' style="display: inline"></div>
+				<div id='arm4' style="display: inline"></div>
+				<div id='arm5' style="display: inline"></div>
+				<div id='arm6' style="display: inline"></div>
+				<div id='arm7' style="display: inline"></div>
+				<div id='arm8' style="display: inline"></div><br>        
+				<div id="next" style="display:block">
+				<b><h3><div id="outcome">Please choose an option!</div></h3></b>
+				</div>
+			</center>   
+		</div>
+
+	   	<!--Eighth page contains demographics-->
+		<div id="page9" style="display:none">
+			<h1> <font size="4">Please tell us something about yourself.</font> </h1>
+			<fieldset>
+				<div style="float:left;width:400px;margin:5px">
+					How old are you?<br>
+					<input id="age" type="radio" name="age" onclick="setage(20)" >18-25<br>
+					<input id="age" type="radio" name="age" onclick="setage(30)" >26-35<br>
+					<input id="age" type="radio" name="age" onclick="setage(40)" >36-50<br>
+					<input id="age" type="radio" name="age" onclick="setage(50)" >above 50<br>
+				</div>
+				<div style="float:left;width:400px;margin:5px">
+					What's your gender?<br>
+					<input id="gender" type="radio" name="gender" onclick="setgender(0)" >Female<br>
+					<input id="gender" type="radio" name="gender" onclick="setgender(1)" >Male<br>
+				</div>
+				<div style="float:left;width:400px;margin:5px">Handedness?<br>
+					<input type="radio" name="handed" value="1" >Right<br>
+					<input type="radio" name="handed" value="2" >Left<br>
+				</div>
+			</fieldset>
+			<div style="width:50px;margin:0 auto">
+				<button type="button" name="button"; onclick="mysubmit()"; >Done</button>
+			</div>
+		</div>
+
+		<!--Ninth page contains results and code word-->
+		<div id="page10" style="display:none">
+		   <h1><font size="4">Your performance and reward</font></h1>
+		   <div id="result"></div><br>
+		   <div id="money"></div><br>
+		   <p>Thank you very much for participating in our study.</p>
+		   <p>Your Mechanical Turk Password is:<br> <b>structuredbandits</b></p><br>
+		   <p>In case you have any questions, please contact us via <br> <b>eric.schulz@tue.mpg.de</b></p>
+		</div>
+	</div>
+    <script src="js/structuredbandit.js" charset="utf-8"></script>
+    </body>
+</html>
