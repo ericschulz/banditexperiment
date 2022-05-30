@@ -8,7 +8,6 @@
     <meta name="author" content="Eric Schulz">
     <meta charset="utf-8">
     <title>Decision making experiment</title>
-    <script src='https://cdn.firebase.com/js/client/1.1.1/firebase.js'></script>
     <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.min.js"></script> 
     <link href="js/bootstrap.css" rel="stylesheet" type="text/css">
@@ -16,7 +15,7 @@
 	 
 	<div class="container" >
 	    
-	   <!--First page contains Welcome-->   
+	   <!--1st page contains Welcome-->   
 	   <div id="page1" style="display:block">
 	     <h3><font FACE="bookman">Decision making experiment</font></h3>
 	     <p> This study is part of a research project conducted by Eric Schulz. </p>
@@ -24,7 +23,7 @@
 	     <button type="button" name="button"; onclick="clickStart('page1','page2')"; >Continue</button>
 	   </div>
 
-		<!--Second page contains Concent form-->
+		<!--2nd page contains Concent form-->
 	   <div id="page2" style="display:none">
 	   		<br> 
 		   	<h4><center>Statement of Informed Consent</center></h4>
@@ -44,7 +43,7 @@
 			<br><br>
 	    </div>
 
-	    <!--Third page contains Overview-->
+	    <!--3rd page contains Overview-->
 		<div id="page3" style="display:none">
 		   <br>
 		   <b> Please enter your Mechanical Turk Worker ID (required for bonus payment):</b><br>
@@ -53,7 +52,7 @@
 		</div>
 
 
-		<!--Third page contains Overview-->
+		<!--4th page contains Overview-->
 		<div id="page4" style="display:none">
 		   <br>
 		     <p><b>Overview:</b></p>
@@ -69,7 +68,7 @@
 		   <button type="button" name="button"; onclick="clickStart('page4','page5')"; >Go to next page</button>
 		</div>
 
-	 	<!--Fourth page contains description on how so sample options-->
+	 	<!--5th page contains description on how so sample options-->
 		<div id="page5" style="display:none">
 			 <br>
 			  <p><b>Find the good options:</b></p>
@@ -87,7 +86,7 @@
 			<button type="button" name="button"; onclick="clickStart('page5','page6')"; >Go to next page</button>
 		</div>
 
-		<!--Fifth page contains keyboard layout-->
+		<!--6th page contains keyboard layout-->
 		<div id="page6" style="display:none">
 			<br>
 				<p><b>Keyboard finger position:</b></p>
@@ -102,7 +101,7 @@
 			<br>
 		</div>
 
-		<!--Sixth page contains comprehension check-->
+		<!--7th page contains comprehension check-->
 		<div id="page7" style="display:none">
 		    <fieldset>
 			    <legend>Please answer a few questions about this study before proceeding</legend>
@@ -137,7 +136,7 @@
 		    <button type="button" name="button"; onclick="instructioncheck()"; >Check answers</button>  
 		</div>
 
-		<!--Seventh page contains task-->
+		<!--8th page contains task-->
 		<div id="page8" style="display:none">
 			<h1> <font size="4">Please choose an option to gain points.</font> </h1>
 			<div id="explainshow" style="display:block">
@@ -168,7 +167,7 @@
 			</center>   
 		</div>
 
-	   	<!--Eighth page contains demographics-->
+	   	<!--9th page contains demographics-->
 		<div id="page9" style="display:none">
 			<h1> <font size="4">Please tell us something about yourself.</font> </h1>
 			<fieldset>
@@ -194,7 +193,7 @@
 			</div>
 		</div>
 
-		<!--Ninth page contains results and code word-->
+		<!--10th page contains results and code word-->
 		<div id="page10" style="display:none">
 		   <h1><font size="4">Your performance and reward</font></h1>
 		   <div id="result"></div><br>
